@@ -13,14 +13,14 @@ from IPython.display import display
 
 
 """
-    Class responsible for reading data from CSV file (TODO: make it read from PostGis data base) and return it as pandas dataframes
+    Utility class responsible for reading data from CSV file (TODO: make it read from PostGis data base) and return it as pandas dataframes
 
 """
 class ReadData():
     __dfNodes = pd.read_csv("/mnt/c/users/kriso/documents/itu/5th_semester/research_project/CoolWalk/data/CoolWalksDataStorge/nodes.csv")
     __dfEdges = pd.read_csv("/mnt/c/users/kriso/documents/itu/5th_semester/research_project/CoolWalk/data/CoolWalksDataStorge/edges.csv")
 
-
+    """considered as utility functions and therefore implemented with the @staticmethod decorator"""
     @staticmethod
     def get_nodes_as_pd() -> pd.DataFrame:
         return ReadData.__dfNodes
