@@ -17,6 +17,7 @@ import com.mapbox.maps.extension.style.style
 /**
  * Load a polyline to a style using GeoJsonSource and display it on a map using LineLayer.
  */
+//code resource: https://docs.mapbox.com/android/maps/examples/draw-geo-json-line/
 class DrawGeoJsonLineActivity : AppCompatActivity() {
     var mapView: MapView? = null
     var button: Button? = null
