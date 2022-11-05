@@ -19,11 +19,17 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
+import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.geojson.Point
+import com.mapbox.maps.plugin.gestures.GesturesPlugin
+import com.mapbox.maps.plugin.gestures.OnMapClickListener
+import com.mapbox.maps.plugin.gestures.OnMoveListener
+import com.mapbox.maps.plugin.gestures.gestures
 
-class MapActivtiy:AppCompatActivity() {
+class MapActivtiy:AppCompatActivity(){
     var mapView: MapView? = null
     lateinit var btn_submit: Button
 
@@ -32,11 +38,7 @@ class MapActivtiy:AppCompatActivity() {
         setContentView(R.layout.activity_map)
         btn_submit = findViewById(R.id.button)
         mapView = findViewById(R.id.mapView)
-        mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS, object : Style.OnStyleLoaded {
-            override fun onStyleLoaded(style: Style) {
-               addAnnotationToMap()
-            }
-        })
+        mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
         btn_submit.setOnClickListener {
 
@@ -45,12 +47,24 @@ class MapActivtiy:AppCompatActivity() {
         }
 
 
+        mapView?.gestures?.addOnMapClickListener {
+            var latitude = it.latitude()
+            var longitude = it.longitude()
+            mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS, object : Style.OnStyleLoaded {
+                override fun onStyleLoaded(style: Style) {
+                    addAnnotationToMap(latitude, longitude)
+                }
+            })
+
+            true
+        }
+
     }
 
-    private fun addAnnotationToMap() {
+    private fun addAnnotationToMap(latitude: Double, longitude: Double) {
         // Create an instance of the Annotation API and get the PointAnnotationManager.
         //code resource: https://docs.mapbox.com/android/maps/examples/default-point-annotation/
-
+        println("hellohello")
         //the bellow codeblock is executed only with non-null values --> if bitmapFromDrawableRes != null then execute the let. Gives bitmap as an argument and
         bitmapFromDrawableRes(this@MapActivtiy, R.mipmap.red_marker_foreground)?.let {
             val annotationApi = mapView?.annotations
@@ -58,7 +72,7 @@ class MapActivtiy:AppCompatActivity() {
             // Set options for the resulting symbol layer.
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
                 // Define a geographic coordinate.
-                .withPoint(Point.fromLngLat(-122.6736, 45.5076))
+                .withPoint(Point.fromLngLat(longitude, latitude))
                 // Specify the bitmap you assigned to the point annotation
                 // The bitmap will be added to map style automatically.
 
@@ -122,6 +136,10 @@ class MapActivtiy:AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mapView?.onDestroy()
+    }
+
+    fun GesturesPlugin.addOnMapClickListener(onMapClickListener: OnMapClickListener) {
+        //
     }
 }
 
