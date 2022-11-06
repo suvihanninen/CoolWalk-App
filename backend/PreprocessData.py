@@ -25,6 +25,19 @@ class PreprocessData:
 
 
     """
+    Creating new column in the edges which represents the fraction of shadow on each edge. Is to be used as a weight/contraint when computing walking route.
+    """
+    @staticmethod
+    def set_shadow_fraction_column_in_edges() -> pd.DataFrame:
+        __edgesPd = readData.ReadData().get_edges_as_pd()
+
+        shadow_fraction_colum = (__edgesPd['shadowed_length'] / __edgesPd['full_length'])
+
+        __edgesPd['shadow_fraction'] = shadow_fraction_colum
+
+        return __edgesPd
+
+    """
     Generate a GeoPandas geometry column from 'geopoint' column in nodes, which will be used to replace the 'geopoint' in nodes in a later step
     """
     @staticmethod
@@ -48,22 +61,13 @@ class PreprocessData:
     @staticmethod
     def set_geometry_column() -> Tuple[pd.DataFrame, pd.DataFrame]:
         __nodesPd = readData.ReadData().get_nodes_as_pd()
-        __edgesPd = readData.ReadData().get_edges_as_pd()
+        __edgesPd_with_shadow_fraction = PreprocessData.set_shadow_fraction_column_in_edges()
         
         #mutating
         __nodesPd['geopoint'] = PreprocessData.generate_nodesgeom_column()
-        __edgesPd['edgegeom'] = PreprocessData.generate_edgesgeom_column()
+        __edgesPd_with_shadow_fraction['edgegeom'] = PreprocessData.generate_edgesgeom_column()
 
-        return __nodesPd, __edgesPd 
-
-
-
-
-
-    #TODO: create shadow fraction column
-
-
-
+        return __nodesPd, __edgesPd_with_shadow_fraction 
 
     """
     Defining Pandas GeoDataFrames from Pandas Dataframes 
@@ -154,4 +158,6 @@ instance = PreprocessData()
 
 x = readData.ReadData().get_nodes_as_pd()['geopoint']
 
-print(x)
+y,z = instance.get_preprocessed_data()
+
+print(y) #Getting error 'Point has no len() ?
