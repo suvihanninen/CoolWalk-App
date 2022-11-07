@@ -1,26 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MapActivtiy">
-
-<com.mapbox.maps.MapView
-    android:id="@+id/mapView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    mapbox:mapbox_cameraTargetLat="45.5076"
-    mapbox:mapbox_cameraTargetLng="-122.6736"
-    mapbox:mapbox_cameraZoom="11"/>
-    <Button
+    android:background="#FFFF"
+    tools:context=".MapActivtiy">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Line"
+        android:orientation="horizontal"
+        mapbox:layout_constraintGuide_begin="497dp" />
+
+    <com.mapbox.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="wrap_content"
+        android:layout_height="510dp"
+        mapbox:layout_constraintEnd_toStartOf="@+id/fromLongitude"
+        mapbox:layout_constraintHorizontal_bias="0.0"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toTopOf="parent"
+        mapbox:mapbox_cameraTargetLat="45.5076"
+        mapbox:mapbox_cameraTargetLng="-122.6736"
+        mapbox:mapbox_cameraZoom="11"/>
+
+    <TextView
+        android:id="@+id/fromLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Longitude here"
+        android:textColor="#000000"
+        mapbox:layout_constraintEnd_toStartOf="@+id/fromLatitude"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toEndOf="@+id/from"
+        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2"></TextView>
+
+    <Button
         android:id="@+id/button"
-        android:background="#A533FF"
-        android:layout_margin="10dp">
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/radient_button"
+        android:text="Show Line"
+        android:textColor="#FFFFFF"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent" />
 
-    </Button>
+    <TextView
+        android:id="@+id/toLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Latitude here"
 
-</FrameLayout>
+        android:textColor="#000000"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toEndOf="@+id/toLongitude"
+        mapbox:layout_constraintTop_toBottomOf="@+id/fromLatitude" />
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="From:"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        mapbox:layout_constraintEnd_toStartOf="@+id/fromLongitude"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="To:"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        mapbox:layout_constraintEnd_toStartOf="@+id/toLongitude"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/from" />
+
+    <TextView
+        android:id="@+id/toLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        android:layout_marginTop="7dp"
+        android:text="Longitude here"
+        android:textColor="#000000"
+        mapbox:layout_constraintEnd_toStartOf="@+id/toLatitude"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toEndOf="@+id/to"
+        mapbox:layout_constraintTop_toBottomOf="@+id/fromLongitude"></TextView>
+
+    <TextView
+        android:id="@+id/fromLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Latitude here"
+        android:textColor="#000000"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintHorizontal_bias="0.5"
+        mapbox:layout_constraintStart_toEndOf="@+id/fromLongitude"
+        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
