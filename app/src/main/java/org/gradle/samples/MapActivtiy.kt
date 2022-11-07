@@ -19,6 +19,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
@@ -32,12 +33,21 @@ import com.mapbox.maps.plugin.gestures.gestures
 class MapActivtiy:AppCompatActivity(){
     var mapView: MapView? = null
     lateinit var btn_submit: Button
+    lateinit var fromLon: TextView
+    lateinit var fromLat: TextView
+    lateinit var toLat: TextView
+    lateinit var toLon: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
         btn_submit = findViewById(R.id.button)
         mapView = findViewById(R.id.mapView)
+        fromLon = findViewById(R.id.fromLongitude)
+        fromLat = findViewById(R.id.fromLatitude)
+        toLon = findViewById(R.id.toLongitude)
+        toLat = findViewById(R.id.toLatitude)
+        var counter=0
         mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
         btn_submit.setOnClickListener {
@@ -53,6 +63,15 @@ class MapActivtiy:AppCompatActivity(){
             mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS, object : Style.OnStyleLoaded {
                 override fun onStyleLoaded(style: Style) {
                     addAnnotationToMap(latitude, longitude)
+
+                    if(counter==0){
+                        fromLon.text = longitude.toString()
+                        fromLat.text = latitude.toString()
+                    }else if(counter==1){
+                        toLon.text = longitude.toString()
+                        toLat.text = latitude.toString()
+                    }
+                    counter++
                 }
             })
 
