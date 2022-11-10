@@ -23,12 +23,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
+import com.google.gson.GsonBuilder
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.geojson.Point
 import com.mapbox.maps.plugin.gestures.GesturesPlugin
 import com.mapbox.maps.plugin.gestures.OnMapClickListener
 import com.mapbox.maps.plugin.gestures.OnMoveListener
 import com.mapbox.maps.plugin.gestures.gestures
+import okhttp3.*
+import java.io.IOException
 
 class MapActivtiy:AppCompatActivity(){
     var mapView: MapView? = null
@@ -50,11 +53,18 @@ class MapActivtiy:AppCompatActivity(){
         var counter=0
         mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
+
+        //Make API call in the fetchGeoJson()
+        fetchGeoJson()
+        println("We are should have fetched the JSON now")
         btn_submit.setOnClickListener {
 
             val intent = Intent(this, DrawGeoJsonLineActivity::class.java)
             startActivity(intent)
         }
+
+
+
 
     //Collect lon and lat
         mapView?.gestures?.addOnMapClickListener {
@@ -78,9 +88,8 @@ class MapActivtiy:AppCompatActivity(){
             true
         }
 
-        //Make API call
-
     }
+
 
     private fun addAnnotationToMap(latitude: Double, longitude: Double) {
         // Create an instance of the Annotation API and get the PointAnnotationManager.
@@ -133,6 +142,39 @@ class MapActivtiy:AppCompatActivity(){
         }
     }
 
+    fun fetchGeoJson(){
+        println("Fetching JSON now")
+        //We need an URL to pass it to the Request.Builder
+        val url = "https://dog.ceo/api/breeds/list/all"
+
+        //Make a okHttp client
+        val client = OkHttpClient()
+
+        val request = Request.Builder().url(url).build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Request failed ${e.localizedMessage}")
+            }
+
+            /**
+             * The gson is used to build the JSON
+             * Since the data fetching is happening on a background thread we need to call a UI thread
+             * to make the data visible on our UI
+             */
+            override fun onResponse(call: Call, response: Response) {
+                //The body is our geoJson file?
+                val body = response.body?.string()
+                print("This is a body of API request $body")
+
+                runOnUiThread {
+
+
+                }
+            }
+        })
+    }
+
 
 
 
@@ -159,8 +201,6 @@ class MapActivtiy:AppCompatActivity(){
         mapView?.onDestroy()
     }
 
-    fun GesturesPlugin.addOnMapClickListener(onMapClickListener: OnMapClickListener) {
-        //
-    }
+
 }
 
