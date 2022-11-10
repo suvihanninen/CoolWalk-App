@@ -53,12 +53,17 @@ dependencies {
 
 
     //mapbox implementation
-
     implementation ('com.mapbox.maps:android:10.8.1'){
         exclude group: 'group_name', module: 'module_name'
     }
 
+    //I dont think we need these
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation "com.google.android.material:material:1.1.0-alpha02"
+
+    //HttpOk API request
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+
 }

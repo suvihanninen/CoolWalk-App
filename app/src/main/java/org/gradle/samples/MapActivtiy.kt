@@ -56,7 +56,7 @@ class MapActivtiy:AppCompatActivity(){
             startActivity(intent)
         }
 
-
+    //Collect lon and lat
         mapView?.gestures?.addOnMapClickListener {
             var latitude = it.latitude()
             var longitude = it.longitude()
@@ -77,6 +77,8 @@ class MapActivtiy:AppCompatActivity(){
 
             true
         }
+
+        //Make API call
 
     }
 
