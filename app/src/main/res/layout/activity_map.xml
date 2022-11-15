@@ -39,12 +39,12 @@
         mapbox:layout_constraintStart_toEndOf="@+id/from"
         mapbox:layout_constraintTop_toBottomOf="@+id/guideline2"></TextView>
 
+    <!--THIS GOES INTO BUTTON: android:background="@drawable/mybutton"-->
     <Button
         android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/radient_button"
         android:text="Show Line"
         android:textColor="#FFFFFF"
         mapbox:layout_constraintBottom_toBottomOf="parent"
