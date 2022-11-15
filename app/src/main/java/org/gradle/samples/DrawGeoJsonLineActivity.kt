@@ -39,13 +39,13 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
             (
                     style(styleUri = Style.MAPBOX_STREETS) {
                         +geoJsonSource(DrawGeoJsonLineActivity.GEOJSON_SOURCE_ID) {
-                            url("https://raw.githubusercontent.com/mapbox/mapbox-android-demo/master/MapboxAndroidDemo/src/main/assets/example.geojson")
+                        url("https://github.itu.dk/krot/CoolWalk/blob/63891fab2657a3c77dc0b3d1e1ab6842415dca5b/app/src/main/res/raw/example.geojson")
                         }
                         +lineLayer("linelayer", DrawGeoJsonLineActivity.GEOJSON_SOURCE_ID) {
                             lineCap(LineCap.ROUND)
                             lineJoin(LineJoin.ROUND)
                             lineOpacity(0.9999)
-                            lineWidth(4.0)
+                            lineWidth(10.0)
                             lineColor("#FF5733")
                         }
                     }
@@ -63,9 +63,9 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
 
     companion object {
         private const val GEOJSON_SOURCE_ID = "line"
-        private const val LATITUDE = 45.5076
-        private const val LONGITUDE = -122.6736
-        private const val ZOOM = 11.0
+        private const val LATITUDE =  52.9666628
+        private const val LONGITUDE =  -1.166666
+        private const val ZOOM = 2.0
     }
 
 

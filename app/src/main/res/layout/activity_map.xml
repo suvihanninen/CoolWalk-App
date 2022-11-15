@@ -23,8 +23,8 @@
         mapbox:layout_constraintHorizontal_bias="0.0"
         mapbox:layout_constraintStart_toStartOf="parent"
         mapbox:layout_constraintTop_toTopOf="parent"
-        mapbox:mapbox_cameraTargetLat="45.5076"
-        mapbox:mapbox_cameraTargetLng="-122.6736"
+        mapbox:mapbox_cameraTargetLat="52.9536"
+        mapbox:mapbox_cameraTargetLng="-1.15047"
         mapbox:mapbox_cameraZoom="11"/>
 
     <TextView
@@ -93,7 +93,8 @@
     <TextView
         android:id="@+id/toLongitude"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"        android:layout_marginTop="7dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:text="Longitude here"
         android:textColor="#000000"
         mapbox:layout_constraintEnd_toStartOf="@+id/toLatitude"
