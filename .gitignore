@@ -398,3 +398,5 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/python,java,android,androidstudio,jupyternotebooks,gradle
+
+.fake
