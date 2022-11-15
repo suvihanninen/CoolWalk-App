@@ -39,7 +39,7 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
             (
                     style(styleUri = Style.MAPBOX_STREETS) {
                         +geoJsonSource(DrawGeoJsonLineActivity.GEOJSON_SOURCE_ID) {
-                        url("https://github.itu.dk/krot/CoolWalk/blob/63891fab2657a3c77dc0b3d1e1ab6842415dca5b/app/src/main/res/raw/example.geojson")
+                        url("https://github.itu.dk/krot/CoolWalk/blob/Suvi_Path_trying/app/src/main/res/raw/example.geojson")
                         }
                         +lineLayer("linelayer", DrawGeoJsonLineActivity.GEOJSON_SOURCE_ID) {
                             lineCap(LineCap.ROUND)
