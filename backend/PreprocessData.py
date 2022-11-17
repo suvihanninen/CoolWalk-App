@@ -23,6 +23,8 @@ class PreprocessData:
 
     """ PREPROCESSING PIPELINE START """
 
+    #TODO add functionality for filling NA´s in the dataframes
+    #TODO rearrange the order such that it matches the order in the notebook. That is, such that the pandas dataframes are not converted into geo dataframes untill in the very end of the pre-preprocessing
 
     """
     Creating new column in the edges which represents the fraction of shadow on each edge. Is to be used as a weight/contraint when computing walking route.
