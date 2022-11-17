@@ -2,40 +2,35 @@ package org.gradle.samples
 
 
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import com.mapbox.maps.MapView
-import com.mapbox.maps.Style
-
 //Imports to add annotations
-import com.mapbox.maps.plugin.annotation.annotations
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
-import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.gson.GsonBuilder
-import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.geojson.Point
-import com.mapbox.maps.plugin.gestures.GesturesPlugin
-import com.mapbox.maps.plugin.gestures.OnMapClickListener
-import com.mapbox.maps.plugin.gestures.OnMoveListener
+import com.mapbox.maps.MapView
+import com.mapbox.maps.Style
+import com.mapbox.maps.plugin.annotation.annotations
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
+import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.plugin.gestures.gestures
 import okhttp3.*
 import java.io.IOException
 
+
 class MapActivtiy:AppCompatActivity(){
     var mapView: MapView? = null
-    lateinit var btn_submit: Button
+    lateinit var showLineBtn: Button
+    lateinit var sendBtn: Button
     lateinit var fromLon: TextView
     lateinit var fromLat: TextView
     lateinit var toLat: TextView
@@ -44,7 +39,8 @@ class MapActivtiy:AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        btn_submit = findViewById(R.id.button)
+        showLineBtn = findViewById(R.id.getDataButton)
+        sendBtn = findViewById(R.id.sendDataButton)
         mapView = findViewById(R.id.mapView)
         fromLon = findViewById(R.id.fromLongitude)
         fromLat = findViewById(R.id.fromLatitude)
@@ -53,18 +49,19 @@ class MapActivtiy:AppCompatActivity(){
         var counter=0
         mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
+        sendBtn.setOnClickListener {
+            fetchGeoJson()
+        }
+
 
         //Make API call in the fetchGeoJson()
-        fetchGeoJson()
+
         println("We are should have fetched the JSON now")
-        btn_submit.setOnClickListener {
+        showLineBtn.setOnClickListener {
 
             val intent = Intent(this, DrawGeoJsonLineActivity::class.java)
             startActivity(intent)
         }
-
-
-
 
     //Collect lon and lat
         mapView?.gestures?.addOnMapClickListener {
@@ -145,12 +142,13 @@ class MapActivtiy:AppCompatActivity(){
     fun fetchGeoJson(){
         println("Fetching JSON now")
         //We need an URL to pass it to the Request.Builder
-        val url = "https://dog.ceo/api/breeds/list/all"
+        val url = "http://127.0.0.1:4000/from/${fromLat}/to/${toLat}"
 
         //Make a okHttp client
         val client = OkHttpClient()
 
-        val request = Request.Builder().url(url).build()
+        val request = Request.Builder().url(url)
+            .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -165,8 +163,10 @@ class MapActivtiy:AppCompatActivity(){
             override fun onResponse(call: Call, response: Response) {
                 //The body is our geoJson file?
                 val body = response.body?.string()
-                print("This is a body of API request $body")
 
+                print("This is a body of API request $body")
+                val gson = GsonBuilder().create()
+                val breedFeed = gson.fromJson(body, FeatureCollection::class.java)
                 runOnUiThread {
 
 
@@ -176,7 +176,23 @@ class MapActivtiy:AppCompatActivity(){
     }
 
 
+    data class FeatureCollection (
+        val features: List<Feature>,
+        val type: String
+    )
 
+    data class Feature (
+        val geometry: Geometry,
+        val properties: Properties,
+        val type: String
+    )
+
+    data class Geometry (
+        val coordinates: List<List<Point>>,
+        val type: String
+    )
+
+    class Properties()
 
     override fun onStart()
     {
