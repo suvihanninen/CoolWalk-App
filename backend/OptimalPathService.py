@@ -24,12 +24,12 @@ class OptimalPathService:
 
 
     @staticmethod
-    def generate_optimal_path(sourcec, target, self) -> list:
-        self.
+    def generate_optimal_path(sourcec, target, cls) -> list:
+        cls.whatever
 
     @classmethod
-    def generate_optimal_path(sourcec, target, self) -> list:
-        self.whatever
+    def generate_optimal_path(sourcec, target, cls) -> list:
+        cls.whatever
 
 
 
@@ -37,4 +37,8 @@ class OptimalPathService:
     def generate_shortest_path(sourcec, target) -> list:
 
     
+instance = OptimalPathService()
+
+    a = instance.graph()
+
     #getattr(<instance_name>,<attribute_name>)
