@@ -4,128 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFF"
+    android:backgroundTint="#80FFFFFF"
+    android:backgroundTintMode="src_over"
+    android:background="@drawable/map"
     tools:context=".MapActivtiy">
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        mapbox:layout_constraintGuide_begin="497dp" />
-
-    <com.mapbox.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="wrap_content"
-        android:layout_height="510dp"
-        mapbox:layout_constraintEnd_toStartOf="@+id/fromLongitude"
-        mapbox:layout_constraintHorizontal_bias="0.0"
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="408dp"
+        android:layout_height="150dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="20dp"
+        android:text="Welcome to use CoolWalkApp!"
+        android:textSize="40dp"
         mapbox:layout_constraintStart_toStartOf="parent"
-        mapbox:layout_constraintTop_toTopOf="parent"
-        mapbox:mapbox_cameraTargetLat="52.9536"
-        mapbox:mapbox_cameraTargetLng="-1.15047"
-        mapbox:mapbox_cameraZoom="11"/>
+        mapbox:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/fromLongitude"
-        android:layout_width="wrap_content"
+        android:id="@+id/first_inst"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Longitude here"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:textColor="#000000"
-        mapbox:layout_constraintEnd_toStartOf="@+id/fromLatitude"
+        android:layout_marginEnd="20dp"
+        android:text="1. Enter your start and end nodes."
+        android:textSize="20dp"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/second_inst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="2. Press Send Nodes -button"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/first_inst" />
+
+    <TextView
+        android:id="@+id/third_inst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="3. Press Show Line -button to render the path"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/second_inst" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/fromInputLayout"
+        android:theme="@style/TextLabel"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:hint="Input from node"
+        android:colorControlActivated="@color/colorPrimary"
+        android:textSize="15dp"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintEnd_toStartOf="@+id/toInputLayout"
         mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toEndOf="@+id/from"
-        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2"></TextView>
+        mapbox:layout_constraintStart_toStartOf="parent">
 
-    <!--THIS GOES INTO BUTTON: android:background="@drawable/mybutton"-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/from_Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000000"/>
 
-    <TextView
-        android:id="@+id/toLatitude"
-        android:layout_width="wrap_content"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:theme="@style/TextLabel"
+        android:id="@+id/toInputLayout"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="Latitude here"
-
-        android:textColor="#000000"
+        android:layout_marginBottom="200dp"
+        android:hint="Input to node"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent"
         mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toEndOf="@+id/toLongitude"
-        mapbox:layout_constraintTop_toBottomOf="@+id/fromLatitude" />
+        mapbox:layout_constraintStart_toEndOf="@+id/fromInputLayout">
 
-    <TextView
-        android:id="@+id/from"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/to_Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sendDataButton"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
         android:layout_marginTop="30dp"
-        android:text="From:"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        mapbox:layout_constraintEnd_toStartOf="@+id/fromLongitude"
-        mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toStartOf="parent"
-        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/to"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="To:"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        mapbox:layout_constraintEnd_toStartOf="@+id/toLongitude"
-        mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toStartOf="parent"
-        mapbox:layout_constraintTop_toBottomOf="@+id/from" />
-
-    <TextView
-        android:id="@+id/toLongitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="Longitude here"
-        android:textColor="#000000"
-        mapbox:layout_constraintEnd_toStartOf="@+id/toLatitude"
-        mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toEndOf="@+id/to"
-        mapbox:layout_constraintTop_toBottomOf="@+id/fromLongitude"></TextView>
-
-    <TextView
-        android:id="@+id/fromLatitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Latitude here"
-        android:textColor="#000000"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Send Nodes"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintBottom_toTopOf="@+id/getDataButton"
         mapbox:layout_constraintEnd_toEndOf="parent"
-        mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toEndOf="@+id/fromLongitude"
-        mapbox:layout_constraintTop_toBottomOf="@+id/guideline2" />
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toBottomOf="@+id/toInputLayout" />
 
     <Button
         android:id="@+id/getDataButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Show Line"
         android:textColor="#FFFFFF"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent"
-        mapbox:layout_constraintHorizontal_bias="0.5"
-        mapbox:layout_constraintStart_toEndOf="@+id/sendDataButton" />
-
-    <Button
-        android:id="@+id/sendDataButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Send Coord"
-        mapbox:layout_constraintBottom_toBottomOf="parent"
-        mapbox:layout_constraintEnd_toStartOf="@+id/getDataButton"
-        mapbox:layout_constraintHorizontal_bias="0.5"
         mapbox:layout_constraintStart_toStartOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
