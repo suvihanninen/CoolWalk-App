@@ -54,6 +54,7 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
                     }
                     )
         )
+
     }
 
     companion object {
