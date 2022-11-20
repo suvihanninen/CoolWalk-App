@@ -10,7 +10,7 @@ app.config["DEBUG"] = True
 # def home():
 #    return "hello"
 
-@app.route("/coolwalk")
+@app.route("/coolwalk", methods=['GET'])
 def distance():
     fro = request.args.get("fro")
     to = request.args.get("to")
