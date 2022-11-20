@@ -3,6 +3,7 @@ package org.gradle.samples
 
 
 //Imports to add annotations
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -12,13 +13,16 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.GsonBuilder
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.GeometryCollection
 import com.mapbox.geojson.LineString
+import com.mapbox.geojson.MultiLineString
+import com.mapbox.geojson.MultiPoint
+import com.mapbox.geojson.MultiPolygon
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.internal.typeadapters.RuntimeTypeAdapterFactory
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
 import okhttp3.*
-import org.json.JSONObject
 import java.io.IOException
 
 
@@ -153,7 +157,7 @@ class MapActivtiy:AppCompatActivity() {
 
 
 
-        val url = "http://10.110.61.94:4000/coolwalk?fro=${fromNode}&to=${toNode}"
+        val url = "http://10.110.61.99:4000/coolwalk?fro=${fromNode}&to=${toNode}"
         //val url1 = "http://127.0.0.1:4000/"
 
         //Make a okHttp client
@@ -175,28 +179,21 @@ class MapActivtiy:AppCompatActivity() {
             override fun onResponse(call: Call, response: okhttp3.Response) {
                 //The body is our geoJson file?
                 println("Before assigning the body")
-                val adapter = RuntimeTypeAdapterFactory
-                        .of(Geometry::class.java)
-                        .registerSubtype(LineString::class.java)
 
-
+                val gson = GsonBuilder()
                 val body = response.body?.string()
 
                 print("This is a body of API request $body")
-               val gson = GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(adapter).create()
-                //This code will be in the Response callback method once the API is ready.
-                //Here featureObject.toString() is equvivalent to the GeoJSON object that we get from the Flask API
-                val response = gson.fromJson(body, Response::class.java)
+
+
+                val response = gson.create().fromJson(body, Response::class.java)
                 val coordsList =  response.features[0].geometry.coordinates
                 val itr = coordsList.listIterator()
                 while (itr.hasNext()) {
                     PointListSingleton.addpoint(itr.next())
                 }
-                val featureCollection = gson.fromJson(body, FeatureCollection::class.java)
-                runOnUiThread {
 
-
-                }
+                runOnUiThread {}
             }
         })
     }
@@ -218,6 +215,9 @@ class MapActivtiy:AppCompatActivity() {
             val coordinates: List<List<Double>>,
             val type: String?
         )
+
+       class LineString()
+
 
         class Properties()
 
