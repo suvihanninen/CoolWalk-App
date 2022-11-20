@@ -30,5 +30,7 @@ class ReadData():
         return ReadData.__dfEdges
 
 
+instance = ReadData()
 
+instance.get_edges_as_pd
     

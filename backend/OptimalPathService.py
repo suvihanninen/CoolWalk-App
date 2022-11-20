@@ -18,9 +18,12 @@ from typing import Dict, List, Tuple
 """
 Class responsible for implmenting functionality for finding the optimal walking path, which is optimized on the amount of shadow on the route
 """
-class OptimalPathService:
-    graph : ox.MultiDiGraph = buildNetwork.BuildNetwork().build_multidigraph()
-    whatever = str = 'whatever'
+class OptimalPathService():
+
+    @staticmethod
+    def test() -> any:
+        __directed_multi_graph = buildNetwork.BuildNetwork().build_multidigraph()
+        return __directed_multi_graph
 
 
     @staticmethod
@@ -32,13 +35,10 @@ class OptimalPathService:
         cls.whatever
 
 
-
     @staticmethod
     def generate_shortest_path(sourcec, target) -> list:
+        return
 
-    
 instance = OptimalPathService()
 
-    a = instance.graph()
-
-    #getattr(<instance_name>,<attribute_name>)
+graph = instance.test()

@@ -19,7 +19,7 @@ from typing import Dict, List, Tuple
 """
 Utility class responsible for preprocessing the the data, recieved as panda dataframes 
 """
-class PreprocessData:
+class PreprocessData():
 
     """ PREPROCESSING PIPELINE START """
 
