@@ -12,7 +12,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.GsonBuilder
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
+import com.mapbox.geojson.internal.typeadapters.RuntimeTypeAdapterFactory
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
 import okhttp3.*
@@ -151,7 +153,8 @@ class MapActivtiy:AppCompatActivity() {
 
 
 
-        val url = "http://127.0.0.1:4000/from/${fromNode}/to/${toNode}"
+        val url = "http://10.110.61.94:4000/coolwalk?fro=${fromNode}&to=${toNode}"
+        //val url1 = "http://127.0.0.1:4000/"
 
         //Make a okHttp client
         val client = OkHttpClient()
@@ -159,6 +162,7 @@ class MapActivtiy:AppCompatActivity() {
         val request = Request.Builder().url(url).build()
 
         client.newCall(request).enqueue(object : Callback {
+
             override fun onFailure(call: Call, e: IOException) {
                 println("Request failed ${e.localizedMessage}")
             }
@@ -170,13 +174,19 @@ class MapActivtiy:AppCompatActivity() {
              */
             override fun onResponse(call: Call, response: okhttp3.Response) {
                 //The body is our geoJson file?
+                println("Before assigning the body")
+                val adapter = RuntimeTypeAdapterFactory
+                        .of(Geometry::class.java)
+                        .registerSubtype(LineString::class.java)
+
+
                 val body = response.body?.string()
 
                 print("This is a body of API request $body")
-                val gson = GsonBuilder().create()
+               val gson = GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(adapter).create()
                 //This code will be in the Response callback method once the API is ready.
                 //Here featureObject.toString() is equvivalent to the GeoJSON object that we get from the Flask API
-                val response = gson.fromJson(body.toString(), Response::class.java)
+                val response = gson.fromJson(body, Response::class.java)
                 val coordsList =  response.features[0].geometry.coordinates
                 val itr = coordsList.listIterator()
                 while (itr.hasNext()) {
@@ -190,6 +200,7 @@ class MapActivtiy:AppCompatActivity() {
             }
         })
     }
+
 
 
         data class Response(
