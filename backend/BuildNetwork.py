@@ -33,4 +33,4 @@ class BuildNetwork:
         return __directed_multi_graph
 
 
-# TODO add attribute values to the edges in the graph manually. fx. by G[<src>][<dst>][<attr_name>] = <value> (See networkX documention for the Graph.get_edge_data method)
+# TODO Suggestion from Maria add attribute values to the edges in the graph manually. fx. by G[<src>][<dst>][<attr_name>] = <value> (See networkX documention for the Graph.get_edge_data method). 

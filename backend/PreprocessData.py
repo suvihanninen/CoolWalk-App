@@ -82,7 +82,7 @@ class PreprocessData():
 
     """
     Find and discard helper nodes from __nodesPd
-        Only rows with helper=Nan should remain
+    Only rows with helper=Nan should remain
     """
     @staticmethod
     def discard_helpernodes() -> pd.DataFrame:
