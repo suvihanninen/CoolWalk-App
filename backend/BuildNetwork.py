@@ -25,14 +25,12 @@ class BuildNetwork:
     Constructing a directional multi graph class from the networkX library MultiDiGraph constructor
     """
     @staticmethod
-    def build_multidigraph() -> ox.MultiDiGraph:
+    def build_multidigraph() -> any:
         __preprocessed_nodes, __preprocessed_edges = preprocessedData.PreprocessData().get_preprocessed_data()
 
         __directed_multi_graph = ox.utils_graph.graph_from_gdfs(__preprocessed_nodes, __preprocessed_edges, graph_attrs=None)
 
         return __directed_multi_graph
 
-instance = BuildNetwork()
 
-x = instance.build_multidigraph()
-
+# TODO add attribute values to the edges in the graph manually. fx. by G[<src>][<dst>][<attr_name>] = <value> (See networkX documention for the Graph.get_edge_data method)

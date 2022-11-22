@@ -28,3 +28,9 @@ class ReadData():
     @staticmethod
     def get_edges_as_pd() -> pd.DataFrame:
         return ReadData.__dfEdges
+
+
+instance = ReadData()
+
+instance.get_edges_as_pd
+    
