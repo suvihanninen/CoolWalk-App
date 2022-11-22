@@ -28,7 +28,7 @@ class GraphUtility():
     Takes a path and the NetworkX Graph from which the path is computed as arguments
     Returns a list of lists
     """
-    def path_to_list_of_coords(G:nx.MultiDiGraph, path:list) -> list:
+    def path_to_list_of_coords(self, G:nx.MultiDiGraph, path:list) -> list:
         x_lookup = nx.get_node_attributes(G, "x")
         y_lookup = nx.get_node_attributes(G, "y")
         path_nodes_coords = []
@@ -41,7 +41,7 @@ class GraphUtility():
     Function responsible for generating a geojson FeatureCollection based on a list of coordinates
     Takes the list of coordinates as argument 
     """
-    def path_coords_to_geojson(listCoord:list) -> FeatureCollection:
+    def path_coords_to_geojson(self, listCoord:list) -> FeatureCollection:
         coords = []
         for pt in listCoord:
              coords.append((pt[0], pt[1]))

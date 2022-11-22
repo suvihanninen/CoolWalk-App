@@ -28,13 +28,19 @@ class OptimalPathService():
     __directed_multi_graph = buildNetwork.BuildNetwork().build_multidigraph()
 
 
+    def __init__(self):
+        self.graphUtility = graphUtility.GraphUtility()
+        self.costfunctionGenerator = costfunctionGenerator.CostfunctionGenerator()
+
+
+
     """HELPER METHODS SECTION STARTS"""
-    def provide_cost_function(self, which_function:str) -> function:
-        costfunctionGenerator = costfunctionGenerator()
+    def provide_cost_function(self, which_function:str) -> any: #should be python buildin type 'function', right?
+        costfunctionGenerator = self.costfunctionGenerator
         if which_function == "1":
-            return costfunctionGenerator().cost_function1 # no () since we want to return the function
+            return costfunctionGenerator.cost_function1 # no () since we want to return the function
         if which_function == "2":
-            return costfunctionGenerator().cost_function2 # no () since we want to return the function
+            return costfunctionGenerator.cost_function2 # no () since we want to return the function
         #TODO throw error if not match
         return None 
 
@@ -52,8 +58,8 @@ class OptimalPathService():
 
     def compute_optimal_path(self, src:int, dst:int) -> FeatureCollection:
         G = OptimalPathService().__get_graph()
-        graphUtility = graphUtility()
-        cost_function = OptimalPathService().provide_cost_function("1")
+        graphUtility = self.graphUtility
+        cost_function = OptimalPathService().provide_cost_function("2")
         optimal_path = nx.shortest_path(G, src, dst, cost_function) 
         list_coords = graphUtility.path_to_list_of_coords(G, optimal_path)
         geojson_feature_response = graphUtility.path_coords_to_geojson(list_coords)
@@ -83,5 +89,6 @@ class OptimalPathService():
 
 instance = OptimalPathService()
 
-graph = instance.compute_optimal_path(1,2)
+graph = instance.compute_optimal_path(10431,8229)
+print(graph)
 #graph = instance.test2()
