@@ -10,7 +10,6 @@ class CostfunctionGenerator():
         #declare and/or instantiate instance attributes by the help of self
         return None
 
-
     @classmethod
     def some_classmethod(cls) -> any:
         #access class attributs by the help of cls.
@@ -28,8 +27,3 @@ class CostfunctionGenerator():
         sunny_length = full_length-shadow_length
         result = (full_length*0.8) + (sunny_length*1.2)
         return result
-
-
-
-    #def get_cost_function1() -> function:
-    #    return CostfunctionGenerator().cost_function1()

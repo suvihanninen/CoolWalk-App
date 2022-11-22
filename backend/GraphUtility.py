@@ -23,6 +23,8 @@ class GraphUtility():
         #access class attributs by the help of cls.
         return None
 
+    """ ##############################################   UTILUTY METHODS SECTION STARTS   ############################################## """
+
     """
     Function responsible for generation a list of coordinates of a given paths.
     Takes a path and the NetworkX Graph from which the path is computed as arguments
@@ -50,6 +52,6 @@ class GraphUtility():
         feature_collection = FeatureCollection([feature])
         return feature_collection
 
+    #TODO: implement other graph utility functions from notebook, such as the various graph inspection functions.
 
-
-#TODO: implement other graph utility functions from notebook, such as the various graph inspection functions.
+    """ ##############################################   UTILUTY METHODS SECTION ENDS   ############################################## """

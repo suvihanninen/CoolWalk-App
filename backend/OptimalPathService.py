@@ -27,14 +27,12 @@ Class responsible for implmenting functionality for finding the optimal walking 
 class OptimalPathService():
     __directed_multi_graph = buildNetwork.BuildNetwork().build_multidigraph()
 
-
     def __init__(self):
         self.graphUtility = graphUtility.GraphUtility()
         self.costfunctionGenerator = costfunctionGenerator.CostfunctionGenerator()
 
+    """ ##############################################   HELPER METHODS SECTION STARTS   ############################################## """
 
-
-    """HELPER METHODS SECTION STARTS"""
     def provide_cost_function(self, which_function:str) -> any: #should be python buildin type 'function', right?
         costfunctionGenerator = self.costfunctionGenerator
         if which_function == "1":
@@ -44,17 +42,13 @@ class OptimalPathService():
         #TODO throw error if not match
         return None 
 
-    """HELPER METHODS SECTION ENDS"""
-
-    @staticmethod
-    def test() -> any:
-        __directed_multi_graph = buildNetwork.BuildNetwork().build_multidigraph()
-        return __directed_multi_graph
-
     @classmethod
     def __get_graph(cls) -> nx.MultiDiGraph:
         return cls.__directed_multi_graph
 
+    """ ##############################################   HELPER METHODS SECTION ENDS   ############################################## """
+
+    """ ##############################################   SERVICE METHODS SECTION BEGINS   ############################################## """
 
     def compute_optimal_path(self, src:int, dst:int) -> FeatureCollection:
         G = OptimalPathService().__get_graph()
@@ -65,27 +59,12 @@ class OptimalPathService():
         geojson_feature_response = graphUtility.path_coords_to_geojson(list_coords)
         return geojson_feature_response
 
-
-
-        return G
-
-    def get_optimal_path_as_geojson() -> FeatureCollection:
+    def compute_shortest_path() -> FeatureCollection:
         return None
+        #TODO implement compute_shortest_path() function
 
+    """ ##############################################   SERVICE METHODS SECTION ENDS   ############################################## """
 
-
-    @staticmethod
-    def generate_optimal_path(sourcec, target, cls) -> list:
-        cls.whatever
-
-    @classmethod
-    def generate_optimal_path(sourcec, target, cls) -> list:
-        cls.whatever
-
-
-    @staticmethod
-    def generate_shortest_path(sourcec, target) -> list:
-        return
 
 instance = OptimalPathService()
 
