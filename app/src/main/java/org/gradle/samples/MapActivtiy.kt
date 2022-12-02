@@ -157,8 +157,8 @@ class MapActivtiy:AppCompatActivity() {
 
 
 
-        val url = "http://10.110.61.99:4000/coolwalk?fro=${fromNode}&to=${toNode}"
-        //val url1 = "http://127.0.0.1:4000/"
+        val url = "http://10.0.2.2:5000/coolwalk?fro=${fromNode}&to=${toNode}"
+
 
         //Make a okHttp client
         val client = OkHttpClient()

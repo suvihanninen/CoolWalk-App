@@ -1,6 +1,7 @@
 import json
 import OptimalPathService as optimalPathService
 from flask import Flask, request, redirect
+import geopandas as gpd
 
 # from optimal_path_service import compute_optimal_path
 
@@ -21,8 +22,7 @@ def get_optimal_path():
     # show the user profile for that user
     # result = compute_optimal_path(fr, to)
     return geojson_feature_response
-
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(host="0.0.0.0", debug=True, port=4000)
+    app.run(host="0.0.0.0", debug=True, port=5000, threaded=True)
 

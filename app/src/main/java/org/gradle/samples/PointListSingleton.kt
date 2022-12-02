@@ -14,6 +14,10 @@ object PointListSingleton {
         routeCoordinates.add(Point.fromLngLat(latCoord, lonCoord))
     }
 
+    fun emptyData(){
+        routeCoordinates.removeAll(routeCoordinates)
+    }
+
     var featureLineString = Feature.fromGeometry(LineString.fromLngLats(routeCoordinates))
     var featureCollection = FeatureCollection.fromFeature(featureLineString)
 }

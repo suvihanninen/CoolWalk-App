@@ -17,8 +17,8 @@ from IPython.display import display
 
 """
 class ReadData():
-    __dfNodes = pd.read_csv("/mnt/c/users/kriso/documents/itu/5th_semester/research_project/CoolWalk/data/CoolWalksDataStorge/nodes.csv")
-    __dfEdges = pd.read_csv("/mnt/c/users/kriso/documents/itu/5th_semester/research_project/CoolWalk/data/CoolWalksDataStorge/edges.csv")
+    __dfNodes = pd.read_csv("../data/CoolWalksDataStorge/nodes.csv")
+    __dfEdges = pd.read_csv("../data/CoolWalksDataStorge/edges.csv")
 
     """considered as utility functions and therefore implemented with the @staticmethod decorator"""
     @staticmethod
