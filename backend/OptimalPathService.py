@@ -23,6 +23,7 @@ from geojson import Feature, LineString, FeatureCollection
 
 """
 Class responsible for implmenting functionality for finding the optimal walking path, which is optimized on the amount of shadow on the route
+Consider implementng it with static methods instead
 """
 class OptimalPathService():
     __directed_multi_graph = buildNetwork.BuildNetwork().build_multidigraph()
@@ -53,7 +54,7 @@ class OptimalPathService():
     def compute_optimal_path(self, src:int, dst:int) -> FeatureCollection:
         G = OptimalPathService().__get_graph()
         graphUtility = self.graphUtility
-        cost_function = OptimalPathService().provide_cost_function("2")
+        cost_function = OptimalPathService().provide_cost_function("2") #TODO define this getter method inside CostFunctionGenerator, and access via a constFunctionGenerator instance
         optimal_path = nx.shortest_path(G, src, dst, cost_function) 
         list_coords = graphUtility.path_to_list_of_coords(G, optimal_path)
         geojson_feature_response = graphUtility.path_coords_to_geojson(list_coords)

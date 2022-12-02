@@ -21,16 +21,12 @@ Utility class responsible for preprocessing the the data, recieved as panda data
 """
 class PreprocessData():
 
-    """ PREPROCESSING PIPELINE START """
-
-    #TODO add functionality for filling NA´s in the dataframes
-    #TODO rearrange the order such that it matches the order in the notebook. That is, such that the pandas dataframes are not converted into geo dataframes untill in the very end of the pre-preprocessing
-
+    """ ##############################################   DATA PREPROCESSING SECTION STARTS   ############################################## """
 
     """
     Creating new column in the edges which represents the fraction of shadow on each edge. Is to be used as a weight/contraint when computing walking route.
-    TODO should be done AFTER shadowed_part_length and full_length have been filled
-
+    
+        TODO should be executed AFTER shadowed_part_length and full_length have been filled
     """
     @staticmethod
     def set_shadow_fraction_column_in_edges() -> pd.DataFrame:
@@ -62,8 +58,6 @@ class PreprocessData():
 
         return __edgesPd_with_shadow_filled
 
-
-
     """
     Find and replace all None-valued 'full_length' instances in edges with the average full_length value
     """
@@ -78,7 +72,6 @@ class PreprocessData():
         __edgesPd_with_length_filled['full_length'] = __length_column_filled
 
         return __edgesPd_with_length_filled
-
 
     """
     Find and discard helper nodes from __nodesPd
@@ -100,7 +93,7 @@ class PreprocessData():
     @staticmethod
     def discard_helperedges() -> pd.DataFrame:
         __edgesPd_with_length_filled = PreprocessData.fill_none_value_lengths_in_edges()
-        __edgesPd_no_helpers = __edgesPd_with_length_filled.drop(__edgesPd_with_length_filled[__edgesPd_with_length_filled.osm_id == 0].index)
+        __edgesPd_no_helpers = __edgesPd_with_length_filled.drop(__edgesPd_with_length_filled[__edgesPd_with_length_filled.helper == True].index)
 
         return __edgesPd_no_helpers
 
@@ -210,7 +203,9 @@ class PreprocessData():
 
         return __nodesGdp_named_columns
 
-    """ PREPROCESSING PIPELINE ends """
+    """ ##############################################   DATA PREPROCESSING SECTION ENDS   ############################################## """
+
+    """ ##############################################   HELPER METHODS SECTION STARTS   ############################################## """
 
     """
     Return preprocessed nodes and edges ready for Graph construction
@@ -222,6 +217,11 @@ class PreprocessData():
         __preprocessed_edges = PreprocessData.pd_to_gpd('edges')
 
         return __preprocessed_nodes, __preprocessed_edges 
+
+    """ ##############################################   HELPER METHODS SECTION ENDS   ############################################## """
+
+
+    """ ##############################################   TESTING SECTION STARTS   ############################################## """
 
     
     @staticmethod
@@ -236,7 +236,7 @@ class PreprocessData():
 instance = PreprocessData()
 
 #x = readData.ReadData().get_nodes_as_pd()['geopoint']
-y = instance.make_graph()
+#y = instance.make_graph()
 
 #x,z = instance.get_preprocessed_data()
 
