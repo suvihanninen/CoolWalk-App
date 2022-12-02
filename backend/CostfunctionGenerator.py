@@ -17,7 +17,7 @@ class CostfunctionGenerator():
 
     def cost_function1(self, scr:int, dst:int, d:dict) -> int:
         full_length = min(attr.get('full_length', 0) for attr in d.values())
-        shadow_length = min(attr.get('shadowed_part_length', 1) for attr in d.values())
+        shadow_length = min(attr.get('shadowed_length', 1) for attr in d.values())
         result = (shadow_length/full_length) + (full_length/shadow_length)
         return result
 

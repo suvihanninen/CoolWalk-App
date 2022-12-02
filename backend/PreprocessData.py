@@ -50,11 +50,11 @@ class PreprocessData():
     @staticmethod
     def fill_none_value_shadows_in_edges() -> pd.DataFrame:
         __edgesPd_with_shadow_fraction_column = PreprocessData().set_shadow_fraction_column_in_edges()
-        __shadow_column_filled = __edgesPd_with_shadow_fraction_column['shadowed_part_length'].fillna(0)
+        __shadow_column_filled = __edgesPd_with_shadow_fraction_column['shadowed_length'].fillna(0)
         __edgesPd_with_shadow_filled = PreprocessData().set_shadow_fraction_column_in_edges()
         
         # mutating
-        __edgesPd_with_shadow_filled['shadowed_part_length'] = __shadow_column_filled
+        __edgesPd_with_shadow_filled['shadowed_length'] = __shadow_column_filled
 
         return __edgesPd_with_shadow_filled
 
