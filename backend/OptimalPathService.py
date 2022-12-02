@@ -53,11 +53,14 @@ class OptimalPathService():
 
     def compute_optimal_path(self, src:int, dst:int) -> FeatureCollection:
         G = OptimalPathService().__get_graph()
+        print(G)
         graphUtility = self.graphUtility
-        cost_function = OptimalPathService().provide_cost_function("2") #TODO define this getter method inside CostFunctionGenerator, and access via a constFunctionGenerator instance
-        optimal_path = nx.shortest_path(G, src, dst, cost_function) 
+        cost_function = OptimalPathService().provide_cost_function("2") 
+        
+        optimal_path = nx.shortest_path(G, int(src), int(dst), cost_function) #TODO define this getter method inside CostFunctionGenerator, and access via a constFunctionGenerator instance
         list_coords = graphUtility.path_to_list_of_coords(G, optimal_path)
         geojson_feature_response = graphUtility.path_coords_to_geojson(list_coords)
+        print(geojson_feature_response)
         return geojson_feature_response
 
     def compute_shortest_path() -> FeatureCollection:
@@ -69,6 +72,6 @@ class OptimalPathService():
 
 instance = OptimalPathService()
 
-graph = instance.compute_optimal_path(10431,8229)
+graph = instance.compute_optimal_path(1,2582)
 print(graph)
 #graph = instance.test2()

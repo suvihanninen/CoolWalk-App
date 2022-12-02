@@ -50,11 +50,13 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
                             lineOpacity(0.9999)
                             lineWidth(2.0)
                             lineColor("#FF5733")
+
                         }
                     }
                     )
         )
 
+        PointListSingleton.emptyData()
     }
 
     companion object {
