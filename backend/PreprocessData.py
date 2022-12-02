@@ -54,7 +54,7 @@ class PreprocessData():
         __edgesPd_with_shadow_filled = PreprocessData().set_shadow_fraction_column_in_edges()
         
         # mutating
-        __edgesPd_with_shadow_filled['full_length'] = __shadow_column_filled
+        __edgesPd_with_shadow_filled['shadowed_part_length'] = __shadow_column_filled
 
         return __edgesPd_with_shadow_filled
 
@@ -125,21 +125,21 @@ class PreprocessData():
         return __edgePd_with_index
 
     """
-    Generate a GeoPandas geometry column from 'geopoint' column in nodes, which will be used to replace the 'geopoint' in nodes in a later step
+    Generate and return a GeoPandas geometry column from 'geopoint' column in nodes, which will be used to replace the 'geopoint' in nodes in a later step
     """
     @staticmethod
     def generate_nodesgeom_column() -> any:
-        df = readData.ReadData().get_nodes_as_pd()
+        df = PreprocessData().set_nodes_index()
         nodes_geom_column = gpd.GeoSeries.from_wkt(df['geopoint'])
 
         return nodes_geom_column
     
     """
-    Generate a GeoPandas geometry column from 'edgegeom' column in edges, which will be used to replace the 'edgegeom' in edges in a later step
+    Generate and return a GeoPandas geometry column from 'edgegeom' column in edges, which will be used to replace the 'edgegeom' in edges in a later step
     """
     @staticmethod
     def generate_edgesgeom_column() -> any:
-        df = readData.ReadData().get_edges_as_pd()
+        df = PreprocessData().set_edges_index()
         edges_geom_column = gpd.GeoSeries.from_wkt(df['edgegeom'])
 
         return edges_geom_column
@@ -236,7 +236,7 @@ class PreprocessData():
 instance = PreprocessData()
 
 #x = readData.ReadData().get_nodes_as_pd()['geopoint']
-#y = instance.make_graph()
+y = instance.make_graph()
 
 #x,z = instance.get_preprocessed_data()
 
