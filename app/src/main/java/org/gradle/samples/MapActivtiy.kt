@@ -22,7 +22,10 @@ import com.mapbox.geojson.Point
 import com.mapbox.geojson.internal.typeadapters.RuntimeTypeAdapterFactory
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
-import okhttp3.*
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.io.IOException
 
 
@@ -183,10 +186,11 @@ class MapActivtiy:AppCompatActivity() {
                 val gson = GsonBuilder()
                 val body = response.body?.string()
 
-                print("This is a body of API request $body")
-
-
+                val startTime = System.currentTimeMillis()
                 val response = gson.create().fromJson(body, Response::class.java)
+                val elapsedTime = System.currentTimeMillis() - startTime
+                println("Total elapsed http request/response time in milliseconds: $elapsedTime")
+
                 val coordsList =  response.features[0].geometry.coordinates
                 val itr = coordsList.listIterator()
                 while (itr.hasNext()) {
