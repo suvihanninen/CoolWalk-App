@@ -1,11 +1,11 @@
 # CoolWalk
 
 ## Table of contents
-[Setting up code enviroment](#setting)  
-[Conda yml](#yml)
-[Manual procedure](#manual)
-[Android Studio](#android)
-[To run the application](#app)
+* [Setting up code enviroment](#setting)  
+* [Conda yml](#yml)
+* [Manual procedure](#manual)
+* [Android Studio](#android)
+* [To run the application](#app)
 
 
 
