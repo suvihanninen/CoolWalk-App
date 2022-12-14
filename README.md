@@ -27,7 +27,7 @@ Cloning the depository, run the two command in the terminal:
 
 <a name="manual"></a>
 ### Manual procedure
--Create new enviroment manually
+Create new enviroment manually
 1. conda create --name myenv
 2. conda activate myenv
 
@@ -54,9 +54,7 @@ Our current versions of the different packages:
 ### To run the application 
 - Open IDE and android studio
 - Navigate to the backend.py folder in terminal. Then run the Flask server with the command `flask --app app run`.
-- Press the run app button at the top in android studio 
-<img width="78" alt="Skærmbillede 2022-12-14 kl  21 31 37" src="https://github.itu.dk/storage/user/3592/files/032350e1-82c9-4157-a919-a572bca385cd">
-
+- Press the run app button at the top in android studio. Red box in picture above 
 - Enter two nodes in the emulator
 - Press the send node button
 - Press show line
