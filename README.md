@@ -21,7 +21,7 @@ Cloning the depository, run the two command in the terminal:
 
 <a name="yml"></a>
 ### Conda yml
-You need anaconda and conda installed
+You need anaconda and conda installed__
 [Download ".yml"](environment.yml) 
 1. conda env create -f environment.yml
 2. conda env list
