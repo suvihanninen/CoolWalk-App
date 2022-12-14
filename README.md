@@ -1,11 +1,13 @@
 # CoolWalk
 
 ## Table of contents
-[Setting up code enviroment](#)  
+[Setting up code enviroment](#Setting)  
 [Conda yml](#emphasis)
 [Manual procedure](#emphasis)
 [Android Studio](#emphasis)
 [To run the application](#emphasis)
+
+<a name="Setting "/>
 
 
 ## Setting up code enviroment
