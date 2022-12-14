@@ -14,7 +14,8 @@ After cloning the depository, run two command in the terminal:
 -Create new enviroment manually
 1. conda create --name myenv
 2. conda activate myenv
-Ours current versions of the different packages:
+
+Our current versions of the different packages:
 - osmnx 1.2.2       
 - networkx 2.8.7  
 - geopandas 0.11.1
