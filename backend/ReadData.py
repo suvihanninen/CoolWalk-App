@@ -1,15 +1,6 @@
 # import modules
-import geopandas as gpd
-import matplotlib.pyplot as plt
-from shapely import wkt
-from shapely.geometry import Point
-import shapely
-import osmnx as ox
 import pandas as pd
-import networkx as nx
-from shapely.geometry import LineString
-from tabulate import tabulate
-from IPython.display import display
+
 
 
 """
@@ -17,8 +8,8 @@ from IPython.display import display
 
 """
 class ReadData():
-    __dfNodes = pd.read_csv("../data/CoolWalksDataStorge/nodes.csv")
-    __dfEdges = pd.read_csv("../data/CoolWalksDataStorge/edges.csv")
+    __dfNodes = pd.read_csv("../data/CoolWalksDataStorge/nottingham/nottingham_nodes.csv")
+    __dfEdges = pd.read_csv("../data/CoolWalksDataStorge/nottingham/nottingham_edges.csv")
 
     """considered as utility functions and therefore implemented with the @staticmethod decorator"""
     @staticmethod
