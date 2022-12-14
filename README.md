@@ -1,5 +1,9 @@
 # CoolWalk
 
+## Table of contents
+[Headers](#headers)  
+[Emphasis](#emphasis)
+
 ## Setting up code enviroment
 After cloning the depository, run two command in the terminal:
 1. git submodel init
@@ -23,7 +27,7 @@ Our current versions of the different packages:
 - Python 3.10.6
 - conda 22.9.0
 
-### Andorid studio
+### Android studio
 1. Install android studio
 2. Change emulator by pressing where the blue box is
 ![android studio](https://github.itu.dk/storage/user/3592/files/dc20d384-10b1-4d46-9397-4eafaf5a4493)
