@@ -15,13 +15,13 @@ This repository contains an implementation of a GIS application that was part of
 
 <a name="setting"></a>
 ## Setting up code enviroment
-You need anaconda and conda installed
 Cloning the depository, run the two command in the terminal:
 1. git submodel init
 2. git submodel update
 
 <a name="yml"></a>
 ### Conda yml
+You need anaconda and conda installed
 [Download ".yml"](environment.yml) 
 1. conda env create -f environment.yml
 2. conda env list
