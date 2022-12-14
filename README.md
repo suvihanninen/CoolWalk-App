@@ -1,7 +1,7 @@
 # CoolWalk
 
 ## Table of contents
-[Setting up code enviroment](#Setting)  
+[Setting up code enviroment](#setting)  
 [Conda yml](#emphasis)
 [Manual procedure](#emphasis)
 [Android Studio](#emphasis)
@@ -9,7 +9,7 @@
 
 
 
-<a name="Setting "/></a>
+
 ## Setting up code enviroment
 After cloning the depository, run two command in the terminal:
 1. git submodel init
