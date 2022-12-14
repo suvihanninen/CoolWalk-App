@@ -15,12 +15,12 @@ After cloning the depository, run two command in the terminal:
 1. conda create --name myenv
 2. conda activate myenv
 Ours current versions of the different packages:
--osmnx 1.2.2       
--networkx 2.8.7  
--geopandas 0.11.1
--flask  2.2.2
--Python 3.10.6
--conda 22.9.0
+- osmnx 1.2.2       
+- networkx 2.8.7  
+- geopandas 0.11.1
+- flask  2.2.2
+- Python 3.10.6
+- conda 22.9.0
 
 ### Andorid studio
 1. Install android studio
