@@ -28,6 +28,8 @@ Change emulator by pressing the top button
 Press device manager
 Create device
 Choose pixel 2 
+<img width="1440" alt="Screenshot 2022-12-08 at 21 02 53" src="https://github.itu.dk/storage/user/4415/files/c7431338-76f9-4e6a-97ca-5203a92bb840">
+
 Choose R 30 x86 and then finish
 
 ### Start application 
