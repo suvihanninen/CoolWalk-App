@@ -3,17 +3,8 @@ import ReadData as readData
 
 # import modules
 import geopandas as gpd
-import matplotlib.pyplot as plt
-from shapely import wkt
-from shapely.geometry import Point
-import shapely
-import osmnx as ox
 import pandas as pd
-import networkx as nx
-from shapely.geometry import LineString
-from tabulate import tabulate
-from IPython.display import display
-from typing import Dict, List, Tuple
+from typing import Tuple
 
 
 """
@@ -125,12 +116,12 @@ class PreprocessData():
         return __edgePd_with_index
 
     """
-    Generate and return a GeoPandas geometry column from 'geopoint' column in nodes, which will be used to replace the 'geopoint' in nodes in a later step
+    Generate and return a GeoPandas geometry column from 'pointgeom' column in nodes, which will be used to replace the 'geopoint' in nodes in a later step
     """
     @staticmethod
     def generate_nodesgeom_column() -> any:
         df = PreprocessData().set_nodes_index()
-        nodes_geom_column = gpd.GeoSeries.from_wkt(df['geopoint'])
+        nodes_geom_column = gpd.GeoSeries.from_wkt(df['pointgeom'])
 
         return nodes_geom_column
     
@@ -152,7 +143,7 @@ class PreprocessData():
         __nodesPd_with_index = PreprocessData().set_nodes_index()
         
         #mutating
-        __nodesPd_with_index['geopoint'] = PreprocessData.generate_nodesgeom_column()
+        __nodesPd_with_index['pointgeom'] = PreprocessData.generate_nodesgeom_column()
 
         return __nodesPd_with_index 
 
@@ -179,7 +170,7 @@ class PreprocessData():
         
         if which_pd == 'nodes':
             __nodesPd_with_geom_column = PreprocessData.set_geometry_column_nodes()
-            __nodesGdp = gpd.GeoDataFrame(__nodesPd_with_geom_column, geometry='geopoint', crs="EPSG:27700")
+            __nodesGdp = gpd.GeoDataFrame(__nodesPd_with_geom_column, geometry='pointgeom', crs="EPSG:27700")
             return __nodesGdp
         if which_pd == 'edges':
             __edgesPd_with_geom_column = PreprocessData.set_geometry_column_edges()
@@ -198,8 +189,8 @@ class PreprocessData():
         __nodesGdp_named_columns = __nodesGdp.rename(columns = {'lat':'x', 'lon':'y'})
 
 
-        __nodesGdp_named_columns['x'] = __nodesGdp_named_columns["geopoint"].x #is inplace?
-        __nodesGdp_named_columns['y'] = __nodesGdp_named_columns["geopoint"].y
+        __nodesGdp_named_columns['x'] = __nodesGdp_named_columns["pointgeom"].x #is inplace?
+        __nodesGdp_named_columns['y'] = __nodesGdp_named_columns["pointgeom"].y
 
         return __nodesGdp_named_columns
 
@@ -224,24 +215,4 @@ class PreprocessData():
     """ ##############################################   TESTING SECTION STARTS   ############################################## """
 
     
-    @staticmethod
-    def make_graph() -> any:
-        __preprocessed_nodes = PreprocessData.rename_nodes_columns()
-        __preprocessed_edges = PreprocessData.pd_to_gpd('edges')
-
-        G = ox.utils_graph.graph_from_gdfs(__preprocessed_nodes, __preprocessed_edges, graph_attrs=None)
-
-        return G 
-
-instance = PreprocessData()
-
-#x = readData.ReadData().get_nodes_as_pd()['geopoint']
-y = instance.make_graph()
-
-#x,z = instance.get_preprocessed_data()
-
-#print(z)
-
-#test = instance.generate_nodesgeom_column()
-#print(test) #Getting error 'Point has no len() ?
-
+   

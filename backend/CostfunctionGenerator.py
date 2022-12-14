@@ -15,6 +15,7 @@ class CostfunctionGenerator():
         #access class attributs by the help of cls.
         return None
 
+    #cost_function1 is not used in the prototype
     def cost_function1(self, scr:int, dst:int, d:dict) -> int:
         full_length = min(attr.get('full_length', 0) for attr in d.values())
         shadow_length = min(attr.get('shadowed_length', 1) for attr in d.values())

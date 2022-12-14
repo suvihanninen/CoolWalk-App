@@ -1,12 +1,7 @@
 package org.gradle.samples
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.mapbox.geojson.Feature
-import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
@@ -17,10 +12,6 @@ import com.mapbox.maps.extension.style.layers.properties.generated.LineJoin
 import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
 import com.mapbox.maps.extension.style.style
 
-
-/**
- * Load a polyline to a style using GeoJsonSource and display it on a map using LineLayer.
- */
 //code resource: https://docs.mapbox.com/android/maps/examples/draw-geo-json-line/
 class DrawGeoJsonLineActivity : AppCompatActivity() {
     var mapView:MapView?=null
@@ -60,7 +51,7 @@ class DrawGeoJsonLineActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val GEOJSON_SOURCE_ID = "line-source" //before source ID
+        private const val GEOJSON_SOURCE_ID = "line-source"
         private const val LATITUDE = -1.166666
         private const val LONGITUDE = 52.9666628
         private const val ZOOM = 10.0
