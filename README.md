@@ -21,6 +21,7 @@ Cloning the depository, run the two command in the terminal:
 
 <a name="yml"></a>
 ### Conda yml
+[Download ".yml"](enviroment.yml) 
 1. conda env create -f environment.yml
 2. conda env list
 3. conda activate geo_env
