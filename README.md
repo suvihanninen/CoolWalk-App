@@ -6,14 +6,14 @@ git submodel init
 git submodel update
 
 ### Conda yml
-conda env create -f environment.yml
-conda env list
-conda activate geo_env
+1. conda env create -f environment.yml
+2. conda env list
+3. conda activate geo_env
 
 ### Manual procedure
--Create new enviroment
-conda create --name myenv
-conda activate myenv
+-Create new enviroment manually
+1. conda create --name myenv
+2. conda activate myenv
 If it doesn't work here are our versions of the different packages:
 osmnx 1.2.2       
 networkx 2.8.7  
@@ -22,13 +22,13 @@ flask  2.2.2
 Python 3.10.6
 conda 22.9.0
 
-### Andorid studio
-Install android studio
-Change emulator by pressing the top button
-Press device manager
-Create device
-Choose pixel 2 
-Choose R 30 x86 and then finish
+### Android studio
+1. Install android studio
+2. Change emulator by pressing the top button
+3. Press device manager
+4. Create device
+5. Choose pixel 2 
+6. Choose R 30 x86 and then finish
 
 ### Start application 
 - Open IDE and android studio
