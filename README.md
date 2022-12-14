@@ -1,4 +1,5 @@
 # CoolWalk
+*By Kris Otte, Fethi Sarihan and Suvi Hänninen*
 
 ## Table of contents
 * [Setting up code enviroment](#setting)  
