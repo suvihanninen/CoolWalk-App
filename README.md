@@ -28,9 +28,9 @@ conda 22.9.0
 3. 4. Press device manager
 5. Create device
 6. Choose pixel 2 
-<img width="1440" alt="Screenshot 2022-12-08 at 21 02 53" src="https://github.itu.dk/storage/user/4415/files/c7431338-76f9-4e6a-97ca-5203a92bb840">
-
 7. Choose R 30 x86 and then finish
+![android studio](https://github.itu.dk/storage/user/3592/files/dc20d384-10b1-4d46-9397-4eafaf5a4493)
+
 
 ### Start application 
 - Open IDE and android studio
