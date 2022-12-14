@@ -22,13 +22,15 @@ flask  2.2.2
 Python 3.10.6
 conda 22.9.0
 
-### Android studio
+### Andorid studio
 1. Install android studio
 2. Change emulator by pressing the top button
-3. Press device manager
-4. Create device
-5. Choose pixel 2 
-6. Choose R 30 x86 and then finish
+3. 4. Press device manager
+5. Create device
+6. Choose pixel 2 
+<img width="1440" alt="Screenshot 2022-12-08 at 21 02 53" src="https://github.itu.dk/storage/user/4415/files/c7431338-76f9-4e6a-97ca-5203a92bb840">
+
+7. Choose R 30 x86 and then finish
 
 ### Start application 
 - Open IDE and android studio
