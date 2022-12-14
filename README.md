@@ -7,7 +7,7 @@
 * [Android Studio](#android)
 * [To run the application](#app)
 
-##Project description
+## Project description
 This repository contains an implementation of a GIS application that was part of our Research Project during our MSc. Degree at IT University of Copenhagen. The purpose of the app is to find an optimal path which goes in shadow. It serves its purpose by being a mobile application developed in Android and it has a backend computing the optimal path which is written in Python by using NetworkX library. It is possible to run the application locally by cloning the repository to your local machine.In order to find the optimal path, the user needs to input a source and destination node to the phone interface which will query the optimal path and visualise it on the map.
 
 
