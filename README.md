@@ -1,7 +1,7 @@
 # CoolWalk
 
 ## Table of contents
-[Headers](#headers)  
+[Headers](#Setting up code enviroment)  
 [Emphasis](#emphasis)
 
 ## Setting up code enviroment
