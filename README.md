@@ -2,29 +2,32 @@
 
 ## Table of contents
 [Setting up code enviroment](#setting)  
-[Conda yml](#emphasis)
-[Manual procedure](#emphasis)
-[Android Studio](#emphasis)
-[To run the application](#emphasis)
+[Conda yml](#yml)
+[Manual procedure](#manual)
+[Android Studio](#android)
+[To run the application](#app)
 
 
 
-
+<a name="setting"></a>
 ## Setting up code enviroment
 After cloning the depository, run two command in the terminal:
 1. git submodel init
 2. git submodel update
 
+<a name="yml"></a>
 ### Conda yml
 1. conda env create -f environment.yml
 2. conda env list
 3. conda activate geo_env
 
+<a name="manual"></a>
 ### Manual procedure
 -Create new enviroment manually
 1. conda create --name myenv
 2. conda activate myenv
 
+<a name="android"></a>
 Our current versions of the different packages:
 - osmnx 1.2.2       
 - networkx 2.8.7  
@@ -33,7 +36,7 @@ Our current versions of the different packages:
 - Python 3.10.6
 - conda 22.9.0
 
-<a name="setting"></a>
+<a name="app"></a>
 ### Android studio
 1. Install android studio
 2. Change emulator by pressing where the blue box is
