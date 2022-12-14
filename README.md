@@ -7,7 +7,7 @@
 [Android Studio](#emphasis)
 [To run the application](#emphasis)
 
-<a name="Setting "/>
+<a name="Setting "/></a>
 
 
 ## Setting up code enviroment
