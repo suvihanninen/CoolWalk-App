@@ -1,8 +1,12 @@
 # CoolWalk
 
 ## Table of contents
-[Setting up code enviroment](#Headers)  
-[Emphasis](#emphasis)
+[Setting up code enviroment](#)  
+[Conda yml](#emphasis)
+[Manual procedure](#emphasis)
+[Android Studio](#emphasis)
+[To run the application](#emphasis)
+
 
 ## Setting up code enviroment
 After cloning the depository, run two command in the terminal:
