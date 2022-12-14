@@ -24,12 +24,13 @@ conda 22.9.0
 
 ### Andorid studio
 1. Install android studio
-2. Change emulator by pressing the top button
-3. 4. Press device manager
+2. Change emulator by pressing where the blue box is
+![android studio](https://github.itu.dk/storage/user/3592/files/dc20d384-10b1-4d46-9397-4eafaf5a4493)
+4. 4. Press device manager
 5. Create device
 6. Choose pixel 2 
 7. Choose R 30 x86 and then finish
-![android studio](https://github.itu.dk/storage/user/3592/files/dc20d384-10b1-4d46-9397-4eafaf5a4493)
+
 
 
 ### Start application 
