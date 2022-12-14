@@ -33,7 +33,7 @@ Our current versions of the different packages:
 - Python 3.10.6
 - conda 22.9.0
 
-<a name="Setting "/></a>
+<a name="setting"></a>
 ### Android studio
 1. Install android studio
 2. Change emulator by pressing where the blue box is
