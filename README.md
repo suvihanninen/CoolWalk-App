@@ -18,8 +18,8 @@ This repository contains an implementation of a GIS application that was part of
 Clone the depository. 
 </br>
 To get the data in the submodules after cloning, run these two commands in the terminal:
-1. git submodel init
-2. git submodel update
+1. git submodule init
+2. git submodule update
 
 <a name="yml"></a>
 ### Conda yml
