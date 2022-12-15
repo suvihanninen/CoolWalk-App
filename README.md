@@ -31,7 +31,7 @@ You need anaconda and conda installed </br>
 
 <a name="manual"></a>
 ### Manual procedure
-Create new enviroment manually
+Create new enviroment manually, if the yml file does not work
 1. conda create --name myenv
 2. conda activate myenv
 
