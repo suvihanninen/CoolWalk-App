@@ -15,7 +15,9 @@ This repository contains an implementation of a GIS application that was part of
 
 <a name="setting"></a>
 ## Setting up code enviroment
-Cloning the depository, run the two command in the terminal:
+Clone the depository. 
+</br>
+To get the data in the submodules after cloning, run these two commands in the terminal:
 1. git submodel init
 2. git submodel update
 
