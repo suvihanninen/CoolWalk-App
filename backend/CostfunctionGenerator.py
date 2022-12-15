@@ -26,5 +26,5 @@ class CostfunctionGenerator():
         full_length = min(attr.get('full_length', 0) for attr in d.values()) 
         shadow_length = min(attr.get('shadowed_length', 0) for attr in d.values())
         sunny_length = full_length-shadow_length
-        result = (full_length*0.8) + (sunny_length*1.2)
+        result = (full_length) + (sunny_length)
         return result
